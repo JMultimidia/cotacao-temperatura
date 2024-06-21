@@ -7,13 +7,10 @@ body {
   font-optical-sizing: auto;
   font-style: normal;
 }
-.exchange-and-time {
-  border-radius:2px;
+#weather-exchange {
+  border-radius:10px;
   border: 1px solid #8b8a8a;
   padding: 10px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
 }
 #cotacoes-e-tempo {
   display: flex;
@@ -80,7 +77,7 @@ body {
 }
 
 .wcpop-cont {
-  display: none;
+  display: flex;
   position: fixed;
   z-index: 1;
   left: 0;
@@ -93,14 +90,13 @@ body {
 
 .wcpop {
   background-color: #fefefe;
-  margin: 15% auto;
-  padding: 20px;
+  margin: 5% auto;
   border: 1px solid #888;
   box-shadow: #525b6e;
   border-radius: 16px;
   box-shadow: 0 1px 2px rgba(0, 0, 0, .4), 0 5px 10px rgba(0, 0, 0, .2);
   width: 420px;
-  height: 330px;
+  height:370px
 }
 
 .wcpop-close {
@@ -124,7 +120,7 @@ body {
   justify-content: space-around;
   flex-wrap: wrap;
 }
-#weather, #cotizacion {
+#wheater, #cotizacion {
   display: inline-block;
   margin-left: 20px;
   padding-left: 20px;
@@ -139,13 +135,13 @@ body {
   margin-bottom: 10px;
   margin-top: 20px;
 }
-.wcpop .cotacao {
+.wcpop .cotacao, .wheater {
   outline: none;
   width: 22%;
   color: #525b6e;
   background: #fff;
   border-radius: 16px;
-  margin-left:10px;
+  margin:0 5px;
   padding: 8px;
   text-align: center;
   -webkit-box-shadow: 1px 1px 16px -7px rgba(0,0,0,0.75);
@@ -154,4 +150,18 @@ body {
 }
 .cprice.cpricec.ts {
   font-size: 16px;
+}
+.wheater .date {
+  font-size: 15px;
+  color: #2d2d2d;
+  text-transform: capitalize;
+}
+.wheater .icon > img {
+  height: 30px;
+}
+.wheater .temp .num {
+  font-size: 14px;
+}
+.wheater .temp-min-max .min-max {
+  font-size: 10px;
 }

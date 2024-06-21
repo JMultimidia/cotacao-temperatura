@@ -1,9 +1,16 @@
 $(document).ready(function() {
   const apiKeyWeather = 'e778c017e55e4107b72113247241906';
-  const apiKeyCurrency = '142a5e5b485ca9c2c8137632';
-  const locationTime = 'Iguatu';
+  const apiKeyCurrency = '';
+  const locationTime = '-6.3604399,-39.3305494';
   const locationMoney = 'Guarany';
   const currencyBase = 'PYG'; // Use Guarani (PYG) como base para conversão
+  // Tentativa de formatar a data diretamente para o formato desejado
+  const options = {
+    weekday: 'short', // Exemplo: 'dom', 'seg', etc.
+    //year: 'numeric',
+    //month: 'short', // Exemplo: 'ene', 'feb', etc.
+    day: 'numeric'
+};
 
   function fetchWeather() {
       $.getJSON(`https://api.weatherapi.com/v1/current.json?key=${apiKeyWeather}&q=${locationTime}&lang=es`, function(data) {
@@ -13,38 +20,57 @@ $(document).ready(function() {
           $('.wtoday .wic').addClass(`wic-${data.current.condition.code}`);
       });
 
-      $.getJSON(`https://api.weatherapi.com/v1/forecast.json?key=${apiKeyWeather}&q=${locationMoney}&days=7&lang=es`, function(data) {
+      $.getJSON(`https://api.weatherapi.com/v1/forecast.json?key=${apiKeyWeather}&q=${locationMoney}&days=4&lang=es&tp=24`, function(data) {
           let forecastHtml = '';
           data.forecast.forecastday.forEach(day => {
-              forecastHtml += `
-                  <div class="it">
-                      <div class="text">${day.date}</div>
-                      <div class="icon"><div class="wic wic-${day.day.condition.code} lnic"></div></div>
-                      <div class="temp">
-                          <div class="num nmin ts">${day.day.mintemp_c}°C</div>
-                          <div class="num nmax ts">${day.day.maxtemp_c}°C</div>
-                      </div>
-                  </div>
+            const temperaturaMinInteira = Math.floor(day.day.mintemp_c);
+            const temperaturaMaxInteira = Math.floor(day.day.maxtemp_c);
+
+            const formattedDate = new Date(day.date).toLocaleDateString('es-ES', options);
+
+            forecastHtml += `
+                <div class="wheater">
+                    <div class="date">${formattedDate}</div>
+                    <div class="icon"><img src="${day.day.condition.icon}"></div>
+                    <div class="temp d-flex justify-content-center align-items-center">
+                        <span class="num me-2">${temperaturaMinInteira}°</span>
+                        <span class="num">${temperaturaMaxInteira}°</span>
+                    </div>
+                    <div class="temp-min-max d-flex justify-content-center align-items-center">
+                        <span class="min-max me-2">min</span>
+                        <span class="min-max">max</span>
+                    </div>
+                </div>
               `;
           });
-          $('#weather-week').html(forecastHtml);
+          //console.log(forecastHtml);
+          $('#wheater-week').html(forecastHtml);
       });
   }
 
   function fetchCurrencyRates() {
       $.getJSON(`https://api.exchangerate-api.com/v4/latest/${currencyBase}`, function(data) {
           const rates = data.rates;
+          const currencyData = {
+            'USD': { buy: (1 / rates['USD']), sell: (1 / rates['USD']) * 1.030 },
+            'EUR': { buy: (1 / rates['EUR']), sell: (1 / rates['EUR']) * 1.025 },
+            'ARS': { buy: (1 / rates['ARS']), sell: (1 /rates['ARS']) * 1.075 },
+            'BRL': { buy: (1 / rates['BRL']), sell: (1 / rates['BRL']) * 1.015 }
+          };
+
           const currencies = ['USD', 'EUR', 'ARS', 'BRL'];
           let cotacoesHtml = '';
           let cotacoesAllHtml = '';
 
           currencies.forEach(currency => {
               const flag = getFlag(currency);
-              const buyRate = (1 / rates[currency]).toFixed(2);
-              const sellRate = (buyRate * 1.03).toFixed(2); // Supondo que a margem de venda é de 3%
+              //const buyRate = (1 / rates[currency]).toFixed(2);
+              //const sellRate = (buyRate * 1.03).toFixed(2); // Supondo que a margem de venda é de 3%
+              const buyRate = currencyData[currency].buy;
+              const sellRate = currencyData[currency].sell;
 
-              const formattedBuyRate = buyRate.toLocaleString('pt-BR');
-              const formattedSellRate = sellRate.toLocaleString('pt-BR');
+              const formattedBuyRate = buyRate.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+              const formattedSellRate = sellRate.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 
               cotacoesHtml += `
                   <div class="citem" title="${currency}" tabindex="-1">
@@ -61,7 +87,7 @@ $(document).ready(function() {
                     <div class="cprice cpricec ts">${formattedBuyRate}</div>
                     <div class="buy">Compra</div>
                     <div class="cprice cpricec ts">${formattedSellRate}</div>
-                    <div class="buy">Venda</div>
+                    <div class="buy">Venta</div>
                   </div>
               `;
           });
@@ -72,7 +98,8 @@ $(document).ready(function() {
               slidesToShow: 1,
               slidesToScroll: 1,
               autoplay: true,
-              autoplaySpeed: 2000
+              arrows: false,
+              autoplaySpeed: 3000
           });
           $('#detalhes-cotacoes').html(cotacoesAllHtml);
       });
@@ -99,37 +126,6 @@ $(document).ready(function() {
   $(document).on('click', function(event) {
       if ($(event.target).closest('#modal-content').length === 0 && $(event.target).closest('#weather-exchange').length === 0) {
           $('#modal').fadeOut();
-      }
-  });
-
-  $.simpleWeather({
-      location: 'Austin, TX',
-      woeid: '',
-      unit: 'c',
-      success: function(weather) {
-          html = '<span>' + weather.city + ' </span><img src="' + weather.thumbnail + '"><span> ' + weather.temp + '&deg;' + weather.units.temp + '</span>';
-          $("#weather").html(html);
-      },
-      error: function(error) {
-          $("#weather").html('<p>' + error + '</p>');
-      }
-  });
-
-  $.simpleWeather({
-      location: 'ciudad del este, py',
-      woeid: '',
-      unit: 'c',
-      success: function(weather) {
-          for (var i = 4; i < weather.forecast.length; i++) {
-              html = '<img class="weather-image" src="' + weather.image + '">' + '<span class="weather-temp"> ' + weather.temp + '&deg;' + weather.units.temp + '</span><span class="weather-date">' + weather.forecast[i].date + '</span><span class="weather-region">' + weather.city + ', ' + weather.country + '</span>';
-          }
-          html += '<span class="weather-humidity">' + weather.humidity + '%</span> ';
-          html += '<span class="weather-wind">' + weather.wind.speed + ' MPH</span>';
-
-          $("#weather-widget").html(html);
-      },
-      error: function(error) {
-          $("#weather-widget").html('<p>' + error + '</p>');
       }
   });
 

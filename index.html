@@ -13,9 +13,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css">
 </head>
 <body>
-    <div class="container">
-      <div id="weather-exchange" class="row exchange-and-time">
-        <div class="col-3">
+  <div class="container">
+    <div id="weather-exchange">
+      <div class="row d-flex justify-content-end align-items-center">
+        <div class="col-2">
           <div id="cotacoes-e-tempo" class="wea-cur wea-cur-open">
             <div class="cur">
                 <div class="slick-slider">
@@ -23,46 +24,46 @@
             </div>
           </div>
         </div>
-        <div class="col-3">
+        <div class="col-2">
           <div class="wea">
             <div class="witem">
-                <div class="wtoday wtemp" title="Agora em Guarany">
+                <div class="wtoday wtemp">
                     <span id="weather-icon"></span>
                     <span id="temperatura"></span>
                 </div>
             </div>
         </div>
-      </div>
     </div>
-    <div id="modal" class="wcpop-cont">
-        <div class="wcpop">
-          <div class="container">
-            <div class="row">
-              <div class="col-12">
-                <h4>Clima de la semana</h4>
-              </div>
-              <div class="col-12">
-                <div id="wheater-week">
-
-                </div>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-12">
-                <h4>Cotizaciones del dia</h4>
-              </div>
-              <div id="detalhes-cotacoes" class="row d-flex justify-content-center align-items-center">
-                <!-- Detalhes das cotações serão inseridos aqui pelo JavaScript -->
-              </div>
+  </div>
+  <div id="modal" class="wcpop-cont">
+    <div class="wcpop">
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <h4 class="text-center">Clima de la semana</h4>
+          </div>
+          <div class="col-12">
+            <div id="wheater-week" class="d-flex justify-content-center align-items-center">
             </div>
           </div>
         </div>
+        <div class="row">
+          <div class="col-12">
+            <h4 class="text-center">Cotizaciones del dia</h4>
+          </div>
+          <div class="col-12">
+            <div id="detalhes-cotacoes" class="d-flex justify-content-center align-items-center">
+            <!-- Detalhes das cotações serão inseridos aqui pelo JavaScript -->
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
-    <!-- <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery.simpleWeather/3.1.0/jquery.simpleWeather.min.js'></script>-->
-    <script src="assets/js/jquery.simpleWeather.min.js"></script>
-    <script src="assets/js/script.js"></script>
-</body>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+  <!-- <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery.simpleWeather/3.1.0/jquery.simpleWeather.min.js'></script>-->
+  <script src="assets/js/jquery.simpleWeather.min.js"></script>
+  <script src="assets/js/jmultimidia-weather-exchange.js"></script>
 </html>
