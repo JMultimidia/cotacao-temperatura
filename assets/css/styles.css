@@ -1,0 +1,157 @@
+/* styles.css */
+body {
+  font-family: Arial, sans-serif;
+}
+* {
+  font-family: "Roboto Condensed", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+}
+.exchange-and-time {
+  border-radius:2px;
+  border: 1px solid #8b8a8a;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+#cotacoes-e-tempo {
+  display: flex;
+  align-items: center;
+}
+
+.cur, .wea {
+  display: flex;
+  align-items: center;
+  margin-right: 20px;
+}
+
+.citem {
+  display: flex;
+  align-items: center;
+}
+
+.wtemp {
+  display: flex;
+  align-items: center;
+}
+#weather-icon img{
+  height:35px
+}
+.wic {
+  width: 20px;
+  height: 20px;
+  margin-right: 5px;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.5);
+}
+.country {
+  font-size: 10px;
+  font-weight: 600;
+}
+.buy {
+  font-size: 9px;
+  line-height: 8px;
+  margin-bottom:10px
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.wcpop-cont {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.wcpop {
+  background-color: #fefefe;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  box-shadow: #525b6e;
+  border-radius: 16px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, .4), 0 5px 10px rgba(0, 0, 0, .2);
+  width: 420px;
+  height: 330px;
+}
+
+.wcpop-close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.wcpop-close:hover {
+  color: black;
+}
+
+.slick-slider {
+  width: 100%;
+}
+
+.weap, .curp {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+#weather, #cotizacion {
+  display: inline-block;
+  margin-left: 20px;
+  padding-left: 20px;
+  line-height: 60px;
+  color: #525b6e;
+  font-size: 14px;
+}
+.wcpop h4 {
+  color: #0072BB;
+  font-size: 18px;
+  font-weight: normal;
+  margin-bottom: 10px;
+  margin-top: 20px;
+}
+.wcpop .cotacao {
+  outline: none;
+  width: 22%;
+  color: #525b6e;
+  background: #fff;
+  border-radius: 16px;
+  margin-left:10px;
+  padding: 8px;
+  text-align: center;
+  -webkit-box-shadow: 1px 1px 16px -7px rgba(0,0,0,0.75);
+  -moz-box-shadow: 1px 1px 16px -7px rgba(0,0,0,0.75);
+  box-shadow: 1px 1px 16px -7px rgba(0,0,0,0.75);
+}
+.cprice.cpricec.ts {
+  font-size: 16px;
+}
