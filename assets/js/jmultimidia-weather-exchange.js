@@ -1,5 +1,5 @@
 $(document).ready(function() {
-  const apiKeyWeather = 'e778c017e55e4107b72113247241906';
+  const apiKeyWeather = '';
   const apiKeyCurrency = '';
   const locationTime = '-6.3604399,-39.3305494';
   const locationMoney = 'Guarany';
