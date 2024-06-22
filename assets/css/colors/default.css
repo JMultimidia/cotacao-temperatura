@@ -1,0 +1,23 @@
+:root {
+	--default: #e80218;
+	--default-2: #d10015;
+	--default-3: #bc0013;
+	--secondary: #2d2d2d;
+	--dark: #000;
+	--dark-bg: #000;
+	--dark-mode:#212121;
+	--font-color: #222;
+	--font-dark-mode:#899095;
+	--light-color: #fff;
+	--light-bg: #fefefe;
+	--medium-color: #525b6e;
+	--tint-color: #3f8dbf;
+	--shadow: #506a85;
+	--gray: #525252;
+	--gray2: #a7a7a7;
+	--gray3: #c6c6c6;
+	--gray4: #D9D9D9;
+	--gray5: #eeeeee;
+	--red: #c50000;
+}
+/*Color*/

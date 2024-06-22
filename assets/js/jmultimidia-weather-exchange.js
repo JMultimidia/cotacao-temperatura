@@ -118,22 +118,16 @@ $(document).ready(function() {
   fetchWeather();
   fetchCurrencyRates();
 
-  $('#weather-exchange').on('click', function() {
-      $('#modal').fadeIn();
+ // Mostrar o modal
+ $('#weather-exchange').on('click', function() {
+    $('#modal').fadeIn();
   });
 
   // Fechar modal ao clicar fora do conteúdo do modal
-  $(document).on('click', function(event) {
-      if ($(event.target).closest('#modal-content').length === 0 && $(event.target).closest('#weather-exchange').length === 0) {
-          $('#modal').fadeOut();
-      }
+  $(window).on('click', function(event) {
+    if ($(event.target).is('#modal')) {
+        $('#modal').fadeOut();
+    }
   });
 
-  $('.coll-clima').click(function() {
-      $('#cotizaciones').collapse('hide');
-  });
-
-  $('.coll-cotizaciones').click(function() {
-      $('#clima').collapse('hide');
-  });
 });

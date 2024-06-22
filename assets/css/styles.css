@@ -1,4 +1,9 @@
 /* styles.css */
+/*------------------------------------------------------------------------------
+    Por: Johannes Nogueira
+    Site: http://www.jmultimidia.com.br
+-------------------------------------------------------------------------------*/
+@import url("colors/default.min.css");
 body {
   font-family: Arial, sans-serif;
 }
@@ -9,7 +14,7 @@ body {
 }
 #weather-exchange {
   border-radius:10px;
-  border: 1px solid #8b8a8a;
+  border: 1px solid var(--secondary);
   padding: 10px;
 }
 #cotacoes-e-tempo {
@@ -61,23 +66,8 @@ body {
   line-height: 8px;
   margin-bottom:10px
 }
-
-.close {
-  color: #aaa;
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
-}
-
-.close:hover,
-.close:focus {
-  color: black;
-  text-decoration: none;
-  cursor: pointer;
-}
-
 .wcpop-cont {
-  display: flex;
+  display: none;
   position: fixed;
   z-index: 1;
   left: 0;
@@ -89,26 +79,14 @@ body {
 }
 
 .wcpop {
-  background-color: #fefefe;
+  background-color: var(--light-bg);
   margin: 5% auto;
-  border: 1px solid #888;
-  box-shadow: #525b6e;
+  border: 1px solid var(--secondary);
+  box-shadow: var(--medium-color);
   border-radius: 16px;
   box-shadow: 0 1px 2px rgba(0, 0, 0, .4), 0 5px 10px rgba(0, 0, 0, .2);
   width: 420px;
   height:370px
-}
-
-.wcpop-close {
-  color: #aaa;
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
-  cursor: pointer;
-}
-
-.wcpop-close:hover {
-  color: black;
 }
 
 .slick-slider {
@@ -125,11 +103,11 @@ body {
   margin-left: 20px;
   padding-left: 20px;
   line-height: 60px;
-  color: #525b6e;
+  color: var(--medium-color);
   font-size: 14px;
 }
 .wcpop h4 {
-  color: #0072BB;
+  color: var(--default);
   font-size: 18px;
   font-weight: normal;
   margin-bottom: 10px;
@@ -138,8 +116,8 @@ body {
 .wcpop .cotacao, .wheater {
   outline: none;
   width: 22%;
-  color: #525b6e;
-  background: #fff;
+  color: var(--medium-color);
+  background: var(--light-color);
   border-radius: 16px;
   margin:0 5px;
   padding: 8px;
@@ -153,7 +131,7 @@ body {
 }
 .wheater .date {
   font-size: 15px;
-  color: #2d2d2d;
+  color: var(--secondary);
   text-transform: capitalize;
 }
 .wheater .icon > img {
@@ -164,4 +142,11 @@ body {
 }
 .wheater .temp-min-max .min-max {
   font-size: 10px;
+}
+@media (max-width: 599px) {
+  .wcpop {
+    margin: 25% auto;
+    width: 370px;
+    height:370px
+  }
 }
