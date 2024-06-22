@@ -3,7 +3,7 @@
     Por: Johannes Nogueira
     Site: http://www.jmultimidia.com.br
 -------------------------------------------------------------------------------*/
-@import url("colors/default.min.css");
+@import url("colors/default.css");
 body {
   font-family: Arial, sans-serif;
 }
@@ -21,18 +21,15 @@ body {
   display: flex;
   align-items: center;
 }
-
 .cur, .wea {
   display: flex;
   align-items: center;
   margin-right: 20px;
 }
-
 .citem {
   display: flex;
   align-items: center;
 }
-
 .wtemp {
   display: flex;
   align-items: center;
@@ -45,7 +42,6 @@ body {
   height: 20px;
   margin-right: 5px;
 }
-
 .modal {
   display: none;
   position: fixed;
@@ -77,7 +73,6 @@ body {
   overflow: auto;
   background-color: rgba(0, 0, 0, 0.5);
 }
-
 .wcpop {
   background-color: var(--light-bg);
   margin: 5% auto;
@@ -88,11 +83,9 @@ body {
   width: 420px;
   height:370px
 }
-
 .slick-slider {
   width: 100%;
 }
-
 .weap, .curp {
   display: flex;
   justify-content: space-around;
